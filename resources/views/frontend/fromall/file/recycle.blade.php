@@ -38,14 +38,14 @@
                             <td>Active</td>
                             <!-- action  -->
                              <td>
-                             <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                                    Manage
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Restor</a></li>
-                                    <li><a class="dropdown-item" href="{{route('file_upload.softdelete',$data->file_id)}}">Delete</a></li>
-                                </ul>
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                        Manage
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{route('file_upload.restore',$data->file_id)}}">Restor</a></li>
+                                        <li><a class="dropdown-item" href="{{route('file_upload.delete',$data->file_id)}}">Delete</a></li>
+                                    </ul>
                                 </div>
                              </td>
                             <!-- action end  -->

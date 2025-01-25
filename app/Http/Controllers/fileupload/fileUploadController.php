@@ -163,6 +163,44 @@ class fileUploadController extends Controller
       return redirect()->back();
      
    }
+   /**========  Restore Data Functionality ======== */
+   public function restore($id){
+
+      $restoreData = File_upload::where('file_id',$id);
+      $restoreData->restore();
+
+      if ($restoreData) {
+         flash()->success(' Data Restore Successfuly !');
+      } else {
+         flash()->error(' Data Restore  Faield !.');
+      }
+      return redirect()->back();
+     
+   }
+   /**========  Delete  Data Functionality ======== */
+   public function delete($id){
+
+      $deleteData = File_upload::where('file_id',$id);
+      
+
+      $file_path = public_path('storage/uploads/images/'.$deleteData->file_name);
+
+      
+      
+      if(file_exists($file_path)){
+         File::delete($file_path);
+      }
+
+
+      $deleteData->forceDelete();
+      if ($deleteData){
+         flash()->success('Delete Data Successfuly !');
+      } else {
+         flash()->error('Delete Data Request Faield !.');
+      }
+      return redirect()->back();
+     
+   }
 
 
 
