@@ -164,6 +164,38 @@ class fileUploadController extends Controller
      
    }
 
+   // restor delete data 
+   public function restore($id){
+
+      $delete = File_upload::where('file_id',$id);
+      $delete->restore();
+
+      if ($delete) {
+         flash()->success('Your Information Delete Successfuly !');
+      } else {
+         flash()->error('Your Information Delete Faield !.');
+      }
+      return redirect()->back();
+     
+   }
+   // restor delete data 
+   public function delete($id){
+
+      $delete = File_upload::where('file_id', $id)->forceDelete();
+      
+
+      if ($delete) {
+         flash()->success('Your Information Delete Successfuly !');
+      } else {
+         flash()->error('Your Information Delete Faield !.');
+      }
+      return redirect()->back();
+     
+   }
+
+
+
+
 
 
 

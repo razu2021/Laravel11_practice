@@ -11,7 +11,7 @@
                                 <h3>Table Information </h3>
                             </div>
                             <div class="col-lg-6 text-end">
-                                <button class="btn btn-success"><a class="text-white" href="{{route('file_upload.recycle')}}">Recycle</a></button>
+                                <button class="btn btn-danger"><a class="text-white" href="{{route('file_upload.recycle')}}">Recycle</a></button>
                                 <button class="btn btn-success"><a class="text-white" href="{{route('file_upload.add')}}">Add New Information</a></button>
                             </div>
                         </div>

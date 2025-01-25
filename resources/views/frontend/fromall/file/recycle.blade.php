@@ -11,7 +11,7 @@
                                 <h3>Table Information </h3>
                             </div>
                             <div class="col-lg-6 text-end">
-                                <button class="btn btn-primary"><a class="text-white" href="{{route('file_upload.add')}}">Add New Information</a></button>
+                                <button class="btn btn-primary"><a class="text-white" href="{{route('file_upload.all')}}">Add New Information</a></button>
                             </div>
                         </div>
                         <hr>
@@ -43,8 +43,8 @@
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Restor</a></li>
-                                    <li><a class="dropdown-item" href="{{route('file_upload.softdelete',$data->file_id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{route('file_upload.restore',$data->file_id)}}">Restor</a></li>
+                                    <li><a class="dropdown-item" href="{{route('file_upload.delete',$data->file_id)}}">Delete</a></li>
                                 </ul>
                                 </div>
                              </td>
