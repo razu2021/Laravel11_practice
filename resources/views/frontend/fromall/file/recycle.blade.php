@@ -46,6 +46,7 @@
                                     <li><a class="dropdown-item" href="{{route('file_upload.restore',$data->file_id)}}">Restor</a></li>
                                     <li><a class="dropdown-item" href="{{route('file_upload.delete',$data->file_id)}}">Delete</a></li>
                                 </ul>
+
                                 </div>
                              </td>
                             <!-- action end  -->

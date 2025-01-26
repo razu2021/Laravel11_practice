@@ -59,8 +59,10 @@ Route::prefix('file-uploads')->name('file_upload.')->group(function(){
     Route::get('/add',[fileUploadController::class,'add'])->name('add');
     Route::post('/submit',[fileUploadController::class,'insert'])->name('submit');
     Route::get('/softdelete/{id}',[fileUploadController::class,'soft_delete'])->name('softdelete');
-    Route::get('/delete/{id}',[fileUploadController::class,'delete'])->name('delete');
     Route::get('/restore/{id}',[fileUploadController::class,'restore'])->name('restore');
+    Route::get('/delete/{id}',[fileUploadController::class,'delete'])->name('delete');
+
+
     Route::get('/recycle',[fileUploadController::class,'recycle'])->name('recycle');
 
 });
