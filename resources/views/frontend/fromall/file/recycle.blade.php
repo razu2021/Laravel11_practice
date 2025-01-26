@@ -44,7 +44,11 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{route('file_upload.restore',$data->file_id)}}">Restor</a></li>
-                                    <li><a class="dropdown-item" href="{{route('file_upload.delete',$data->file_id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item"  href="javascript:voied(0)" onclick="confirmDelete({{ $data->file_id }})">Delete</a></li>
+                                    <form id="delete-form-{{ $data->file_id }}" action="{{route('file_upload.delete',$data->file_id)}}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </ul>
 
                                 </div>
@@ -61,5 +65,6 @@
             <!-- col end  -->
         </div>
     </div>
+
 
 @endsection

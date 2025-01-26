@@ -46,7 +46,11 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
                                     <li><a class="dropdown-item" href="#">View</a></li>
-                                    <li><a class="dropdown-item" href="{{route('file_upload.softdelete',$data->file_id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item" onclick="confirmDelete({{ $data->file_id }})" href="javascript:voied(0)">Delete</a></li>
+                                    <form id="delete-form-{{$data->file_id}}" action="{{route('file_upload.softdelete',$data->file_id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </ul>
                                 </div>
                              </td>

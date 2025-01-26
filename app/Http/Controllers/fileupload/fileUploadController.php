@@ -5,12 +5,10 @@ namespace App\Http\Controllers\fileupload;
 use App\Http\Controllers\Controller;
 use App\Models\File_upload;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
-use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
-use Nette\Utils\Random;
 
 class fileUploadController extends Controller
 {
@@ -180,19 +178,17 @@ class fileUploadController extends Controller
    /**========  Delete  Data Functionality ======== */
    public function delete($id){
 
-      $deleteData = File_upload::where('file_id',$id);
+      $deleteData = File_upload::onlyTrashed()->where('file_id', $id)->first();
       
+      $file_paths = public_path('storage/uploads/images/'.$deleteData->file_name);
 
-      $file_path = public_path('storage/uploads/images/'.$deleteData->file_name);
-
-      
-      
-      if(file_exists($file_path)){
-         File::delete($file_path);
+      if (file_exists($file_paths)){
+          File::delete($file_paths);
       }
 
+      // Delete the database information
+      File_upload::where('file_id', $id)->forceDelete();
 
-      $deleteData->forceDelete();
       if ($deleteData){
          flash()->success('Delete Data Successfuly !');
       } else {

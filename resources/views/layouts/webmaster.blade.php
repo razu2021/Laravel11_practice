@@ -178,6 +178,26 @@
 
 @includeif('alert.toaster')
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to Delete this Record !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
+
 
 
 
