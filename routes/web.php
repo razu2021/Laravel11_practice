@@ -57,7 +57,10 @@ Route::post('flasher-form',[formController::class,'flasher']);
 Route::prefix('file-uploads')->name('file_upload.')->group(function(){
     Route::get('/all',[fileUploadController::class,'index'])->name('all');
     Route::get('/add',[fileUploadController::class,'add'])->name('add');
+    Route::get('/view',[fileUploadController::class,'view'])->name('view');
+    Route::get('/edit/{slug}',[fileUploadController::class,'edit'])->name('edit');
     Route::post('/submit',[fileUploadController::class,'insert'])->name('submit');
+    Route::post('/update',[fileUploadController::class,'update'])->name('update');
     Route::delete('/softdelete/{id}',[fileUploadController::class,'soft_delete'])->name('softdelete');
     Route::get('/restore/{id}',[fileUploadController::class,'restore'])->name('restore');
     Route::delete('/delete/{id}',[fileUploadController::class,'delete'])->name('delete');

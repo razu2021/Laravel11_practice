@@ -9,8 +9,8 @@
             <h3>File Upload Form</h3>
            
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">File Title</label>
-                <input type="text" name="title" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name">
+                <label for="title" class="form-label">File Title</label>
+                <input type="text" name="title" max="5" class="form-control" id="title" aria-describedby="name">
                 <div id="title" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             

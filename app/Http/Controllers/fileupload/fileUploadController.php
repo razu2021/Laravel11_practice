@@ -15,11 +15,23 @@ class fileUploadController extends Controller
    public function index(){
     
      $all = File_upload::get();
+     $deletecount = File_upload::onlyTrashed()->count();
 
-    return view ('frontend.fromall.file.index',compact('all'));
+    return view ('frontend.fromall.file.index',compact('all','deletecount'));
    }
+   /**======  edit page functionality ======== */
    public function add(){
     return view ('frontend.fromall.file.add');
+   }
+
+   /**======  view page functionality ======== */
+   public function view(){
+    return view ('frontend.fromall.file.view');
+   }
+   /**======  edit page functionality ======== */
+   public function edit($slug){
+      $data = File_upload::where('slug',$slug)->firstOrFail();
+      return view ('frontend.fromall.file.edit',compact('data'));
    }
 
 
@@ -109,10 +121,11 @@ class fileUploadController extends Controller
  /*** ==============   Uploads your File ---------------**/
 
 /**==========   store Data in Database ======= */
-
+   $slugs = Str::random(20) . '_'.mt_rand(10000, 100000).'-'.time();
      $insert=  File_upload::create([
          'file_title' => $request->title,
          'file_name' => $file_name,
+         'slug' => $slugs,
       ]);
 
    
@@ -140,6 +153,63 @@ class fileUploadController extends Controller
 
      return redirect()->back();
    }
+
+
+
+
+
+
+
+
+/**----====================  update Data functionality =------------  */
+   public function update(Request $request){
+
+      $id = $request->id;  #find id come from form 
+      $slug = $request->slug; #find slug for update record 
+      $update = File_upload::where('file_id',$id)->where('slug',$slug)->update([
+         'file_title'=>$request->title, #text update code 
+      ]);
+
+      /**--- Upload new file and ---Delete old file form directory---------  */
+      if($request->hasFile('image')){
+
+         /** --- Delete old image form directorys ------  */
+         $old_path = File_upload::where('file_id',$id)->where('slug',$slug)->first();
+         $file_paths = public_path('storage/uploads/images/'.$old_path->file_name);
+         if (file_exists($file_paths)){
+             File::delete($file_paths);
+             flash()->success('Old File Deleted Successfuly ! ');
+         }
+         /** --- Delete old image form directorys ------ END --- */
+
+         $file = $request->image; // get file from 
+         $file_name = Str::random(20) . '_'.mt_rand(10000, 100000).'-'.time().'.'.$file->extension(); // create custom file name 
+         $file_directory = 'uploads/images'; // folder directory 
+         Storage::disk('public')->putFileAs($file_directory, $file, $file_name);  // save file in directory 
+         
+         File_upload::where('file_id',$id)->where('slug',$slug)->update([
+            'file_name'=>$file_name, // database upload code 
+         ]);
+      }
+      /**--- Upload new file and ---Delete old file form directory---------  */
+
+      if ($update) {
+         flash()->success('Your Information Updated Successfully !');
+      } else {
+         flash()->error('Your Information Updated Faild !.');
+      }
+ 
+      return redirect()->back();
+
+   }
+
+
+
+/**----====================  update Data functionality =------------  */
+
+
+
+
 
 
 

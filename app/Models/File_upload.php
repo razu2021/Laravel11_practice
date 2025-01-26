@@ -13,7 +13,7 @@ class File_upload extends Model
         'file_id',
         'file_title',
         'file_name',
-        'slgu',
+        'slug',
         'post_status',
         'status', 
     ];

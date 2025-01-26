@@ -11,7 +11,12 @@
                                 <h3>Table Information </h3>
                             </div>
                             <div class="col-lg-6 text-end">
-                                <button class="btn btn-danger"><a class="text-white" href="{{route('file_upload.recycle')}}">Recycle</a></button>
+                            <a href="{{route('file_upload.recycle')}}">
+                            <button type="button" class="btn btn-warning position-relative mx-2">
+                                Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{$deletecount}}<span class="visually-hidden">unread messages</span>
+                                </span>
+                             </button>
+                             </a>
                                 <button class="btn btn-success"><a class="text-white" href="{{route('file_upload.add')}}">Add New Information</a></button>
                             </div>
                         </div>
@@ -36,6 +41,7 @@
                             <td> <img src="{{asset('storage/uploads/images/'.$data->file_name)}}" alt="" class="" height="80px" width="auto"></td>
                             <td>Created</td>
                             <td>updated </td>
+
                             <td>Active</td>
                             <!-- action  -->
                              <td>
@@ -44,7 +50,7 @@
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    <li><a class="dropdown-item" href="{{route('file_upload.edit',$data->slug)}}">Edit</a></li>
                                     <li><a class="dropdown-item" href="#">View</a></li>
                                     <li><a class="dropdown-item" onclick="confirmDelete({{ $data->file_id }})" href="javascript:voied(0)">Delete</a></li>
                                     <form id="delete-form-{{$data->file_id}}" action="{{route('file_upload.softdelete',$data->file_id)}}" method="post">
