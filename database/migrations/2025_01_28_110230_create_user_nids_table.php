@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('file_uploads', function (Blueprint $table) {
-            $table->bigIncrements('file_id');
-            $table->string('file_title')->nullable();
-            $table->string('file_name')->nullable();
+        Schema::create('user_nids', function (Blueprint $table) {
+            $table->bigIncrements('Nid_id');
+            $table->string('nid_number')->nullable();
             $table->string('slug')->nullable()->unique();
             $table->string('status')->default(1);
             $table->string('post_status')->default(0);
@@ -30,7 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('file_uploads',function (Blueprint $table){
+        Schema::create('user_nids',function (Blueprint $table){
             $table->dropSoftDeletes();
         });
     }

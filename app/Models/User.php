@@ -45,4 +45,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+
+    /**===== Relationship define ====== */
+
+    public function file_uploads(){
+      return  $this->hasOne(File_upload::class,'creator','id');
+    }
+    public function nidInfo(){
+      return  $this->hasOne(UserNid::class,'creator','id');
+    }
+
+
 }

@@ -3,21 +3,23 @@
 namespace App\Http\Controllers\fileupload;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\File_upload;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class fileUploadController extends Controller
 {
    public function index(){
-    
+      $alldata = User::with('file_uploads')->with('nidInfo')->get();
      $all = File_upload::get();
      $deletecount = File_upload::onlyTrashed()->count();
 
-    return view ('frontend.fromall.file.index',compact('all','deletecount'));
+    return view ('frontend.fromall.file.index',compact('all','deletecount','alldata'));
    }
    /**======  edit page functionality ======== */
    public function add(){
@@ -122,10 +124,14 @@ class fileUploadController extends Controller
 
 /**==========   store Data in Database ======= */
    $slugs = Str::random(20) . '_'.mt_rand(10000, 100000).'-'.time();
+   $creator_id = Auth::User()->id;
+ 
      $insert=  File_upload::create([
          'file_title' => $request->title,
          'file_name' => $file_name,
          'slug' => $slugs,
+         'creator'=> $creator_id,
+
       ]);
 
    

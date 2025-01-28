@@ -5,9 +5,11 @@ use App\Http\Controllers\form\formController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::middleware('auth')->group(function(){
+
+
+
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -70,6 +72,11 @@ Route::prefix('file-uploads')->name('file_upload.')->group(function(){
 
 
 
+
+
+
+
+});
 
 
 Route::get('/dashboard', function () {

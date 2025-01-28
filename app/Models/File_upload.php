@@ -14,7 +14,16 @@ class File_upload extends Model
         'file_title',
         'file_name',
         'slug',
+        'creator',
+        'editor',
         'post_status',
         'status', 
     ];
+
+
+    /**======== Relationship to ======= */
+
+    public function userInfo(){
+       return  $this->belongsTo(User::class);
+    }
 }

@@ -73,4 +73,14 @@
         </div>
     </div>
 
+
+    @foreach($alldata as $all)
+        <h3> {{$all->name}}</h3>
+        <h3> {{$all->email}}</h3>
+        <h3> {{$all->file_uploads->file_title}}</h3>
+        <h3> {{$all->nidInfo->nid_number}}</h3>
+    @endforeach
+
+
+
 @endsection
