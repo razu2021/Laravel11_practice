@@ -25,10 +25,8 @@
                         <thead>
                             <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Father Name </th>
-                            <th scope="col">Mother Name </th>
-                            <th scope="col">DoB </th>
+                            <th scope="col">First</th>
+                            <th scope="col">File </th>
                             <th scope="col">Created </th>
                             <th scope="col">Updated</th>
                             <th scope="col">Status</th>
@@ -36,12 +34,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($all as $data)
+                    
                             <tr>
-                            <th scope="row">{{$data->student_id}}</th>
-                            <td>{{$data->student_name}}</td>
-                            <td>{{$data->father_name}}</td>
-                            <td>{{$data->mother_name}}</td>
+                            <th scope="row">id</th>
+                            <td>title</td>
                             <td> <img src="" alt="" class="" height="80px" width="auto"></td>
                             <td>Created</td>
                             <td>updated </td>
@@ -62,7 +58,7 @@
                              </td>
                             <!-- action end  -->
                             </tr>
-                          @endforeach
+                      
                         </tbody>
                         </table>
                     </div>

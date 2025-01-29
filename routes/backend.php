@@ -20,6 +20,12 @@ Route::middleware('auth')->group(function(){
 /**----------- student table route ------------ */
 Route::controller(studentController::class)->prefix('student/')->name('student.')->group(function(){
     Route::get('all','index')->name('all');
+    Route::get('add','add')->name('add');
+    Route::get('view','view')->name('view');
+    Route::get('edit','edit')->name('edit');
+    Route::post('submit','insert')->name('submit');
+    // /////
+    Route::get('addinfo','addinfo')->name('addinfo');
   
 });
 

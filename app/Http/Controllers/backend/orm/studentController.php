@@ -3,11 +3,75 @@
 namespace App\Http\Controllers\backend\orm;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Student;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class studentController extends Controller
 {
-  public function index(){
-     return view('backend.orm.studentinfo.student.index');
+  /** ---- index page functionality ---- */
+  public function addinfo(){
+    
+    return view('backend.orm.studentinfo.student.addinfo');
   }
+  public function index(){
+    $all = Student::get();
+     return view('backend.orm.studentinfo.student.index',compact('all'));
+  }
+  /** ---- index page functionality ---- */
+  public function add(){
+     return view('backend.orm.studentinfo.student.add');
+  }
+  /** ---- index page functionality ---- */
+  public function view(){
+     return view('backend.orm.studentinfo.student.view');
+  }
+  /** ---- index page functionality ---- */
+  public function edit(){
+     return view('backend.orm.studentinfo.student.edit');
+  }
+
+
+
+  /** ---- index page functionality ---- */
+  public function insert(Request $request){
+     
+    $slugs = Str::random(20) . '_'.mt_rand(10000, 100000).'-'.time();
+    $creator_id = Auth::User()->id;
+
+    $insert = Student::create([
+      'student_name'=> $request->student_name,
+      'father_name'=> $request->father_name,
+      'mother_name'=> $request->mother_name,
+      'birth_date'=> $request->birth_date,
+      'slug'=> $slugs,
+      'creator'=> $creator_id,
+    
+    ]);
+
+
+// insert statement
+    if ($insert) {
+        flash()->success('Your Information Submited !');
+    } else {
+        flash()->error('Your Information submitted Faield !.');
+    }
+
+    return redirect()->back();
+
+
+  }
+
+
+
+
+
+
+
+
+
+
 }

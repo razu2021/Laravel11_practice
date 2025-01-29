@@ -244,9 +244,9 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Eloquent ORM</span></li>
             <!-- Cards -->
             <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+              <a href="{{route('student.all')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">One to One/HasOne</div>
+                <div data-i18n="Basic">Student</div>
               </a>
             </li>
             <!-- User interface -->
@@ -662,6 +662,25 @@
   
       <!-- Place this tag in your head or just before your close body tag. -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to Delete this Record !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
     </body>
   </html>
   

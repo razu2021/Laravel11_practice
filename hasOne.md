@@ -12,3 +12,4 @@
     - class Details 
     - bank account 
     - 
+    
