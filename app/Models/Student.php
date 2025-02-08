@@ -24,7 +24,7 @@ class Student extends Model
 /**-------  join all table relationship ---- */
 
 public function student_contact(){
-    return $this->hasOne(StudentContact::class);
+    return $this->hasOne(StudentContact::class,'student_unique_id','student_id');
 }
 
 
