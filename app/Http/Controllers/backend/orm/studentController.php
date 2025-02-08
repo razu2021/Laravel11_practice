@@ -26,8 +26,10 @@ class studentController extends Controller
      return view('backend.orm.studentinfo.student.add');
   }
   /** ---- index page functionality ---- */
-  public function view(){
-     return view('backend.orm.studentinfo.student.view');
+  public function view($id){
+    $alldata = Student::where('student_id',$id)->with('student_contact')->firstOrFail();
+    dd($alldata);
+     return view('backend.orm.studentinfo.student.view',compact('alldata'));
   }
   /** ---- index page functionality ---- */
   public function edit(){
@@ -53,7 +55,7 @@ class studentController extends Controller
     ]);
 
 
-// insert statement
+    // insert statement
     if ($insert) {
         flash()->success('Your Information Submited !');
     } else {
@@ -69,6 +71,69 @@ class studentController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+   /**========  soft Delete Functionality ======== */
+   public function softdelete($id){
+
+    $delete = Student::where('student_id',$id);
+    $delete->delete();
+
+    if ($delete) {
+       flash()->success('Your Information Delete Successfuly !');
+    } else {
+       flash()->error('Your Information Delete Faield !.');
+    }
+
+    return redirect()->back();
+   
+ }
+ /**========  Restore Data Functionality ======== */
+ public function restore($id){
+
+    $restoreData = Student::where('student_id',$id);
+    $restoreData->restore();
+
+    if ($restoreData) {
+       flash()->success(' Data Restore Successfuly !');
+    } else {
+       flash()->error(' Data Restore  Faield !.');
+    }
+    return redirect()->back();
+   
+ }
+ /**========  Delete  Data Functionality ======== */
+ public function delete($id){
+
+    $deleteData = Student::onlyTrashed()->where('student_id', $id);
+    $deleteData->forceDelete();
+
+    if ($deleteData){
+       flash()->success('Delete Data Successfuly !');
+    } else {
+       flash()->error('Delete Data Request Faield !.');
+    }
+    return redirect()->back();
+   
+ }
+
+
+
+
+
+/**--------Recycle blade view -------- */
+ public function recycle(){
+    $all = Student::onlyTrashed()->get();
+    return view('backend.orm.studentinfo.student.recycle',compact('all'));
+ }
+
+/**--------Recycle blade view -------- */
 
 
 

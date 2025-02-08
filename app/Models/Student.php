@@ -19,4 +19,19 @@ class Student extends Model
         'creator',
         'editor',
     ];
+
+
+/**-------  join all table relationship ---- */
+
+public function student_contact(){
+    return $this->hasOne(StudentContact::class);
+}
+
+
+
+
+
+
+
+//-------------
 }
