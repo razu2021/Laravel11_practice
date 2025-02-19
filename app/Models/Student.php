@@ -9,22 +9,18 @@ class Student extends Model
 {
     use SoftDeletes;
 
+    protected $primaryKey = 'student_id';
     protected $guarded = [];
-    protected $filable = [
-        'student_id',
-        'slug',
-        'status',
-        'post_status',
-        'post_status',
-        'creator',
-        'editor',
-    ];
 
 
 /**-------  join all table relationship ---- */
-
 public function student_contact(){
     return $this->hasOne(StudentContact::class,'student_unique_id','student_id');
+}
+
+
+public function student_hobby(){
+    return $this->hasMany(studentHobby::class,'student_unique_id','student_id');
 }
 
 

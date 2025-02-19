@@ -27,8 +27,10 @@ class studentController extends Controller
   }
   /** ---- index page functionality ---- */
   public function view($id){
-    $alldata = Student::where('student_id',$id)->with('student_contact')->firstOrFail();
-    dd($alldata);
+    $alldata = Student::where('student_id',$id)->with(['student_contact','student_hobby'])
+    
+    ->firstOrFail();
+   // dd($alldata);
      return view('backend.orm.studentinfo.student.view',compact('alldata'));
   }
   /** ---- index page functionality ---- */
