@@ -41,4 +41,12 @@ class StudentcontactController extends Controller
             'email'=>$request->email,
         ]);
     }
+
+
+
+
+
+
+
+    
 }

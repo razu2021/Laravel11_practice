@@ -9,10 +9,12 @@ class Student extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'studentid',
+    protected $guarded = [];
+    protected $filable = [
+        'student_id',
         'slug',
         'status',
+        'post_status',
         'post_status',
         'creator',
         'editor',
@@ -23,9 +25,13 @@ class Student extends Model
 
 
 /**-------  join all table relationship ---- */
-
 public function student_contact(){
     return $this->hasOne(StudentContact::class);
+}
+
+
+public function student_hobby(){
+    return $this->hasMany(studentHobby::class,'student_unique_id','student_id');
 }
 
 
