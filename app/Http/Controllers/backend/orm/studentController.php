@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend\orm;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\course_student;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Support\Str;
@@ -27,9 +29,15 @@ class studentController extends Controller
   }
   /** ---- index page functionality ---- */
   public function view($id){
-    $alldata = Student::where('student_id',$id)->with('student_contact')->firstOrFail();
-   // dd($alldata);
-     return view('backend.orm.studentinfo.student.view',compact('alldata'));
+   $allcourse = Course::get();
+    $alldata = Student::where('student_id',$id)->with([
+      'student_contact',
+      'student_hobby',
+      'courses'
+    ])->firstOrFail();
+    
+    //dd($alldata);
+     return view('backend.orm.studentinfo.student.view',compact('alldata','allcourse'));
   }
   /** ---- index page functionality ---- */
   public function edit(){
@@ -66,6 +74,20 @@ class studentController extends Controller
 
 
   }
+
+/**  add courses  */
+  public function course(Request $request){
+      
+   $insert = course_student::create([
+      'student_uniuqe_id'=>$request->student_unique_id,
+      'course_unique_id'=>$request->course_id,
+   ]);
+   return ;
+
+
+  }
+
+
 
 
 

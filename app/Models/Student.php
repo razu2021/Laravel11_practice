@@ -29,11 +29,18 @@ public function student_contact(){
     return $this->hasOne(StudentContact::class,'student_unique_id','student_id');
 }
 
-
+/** one to many relationship  */
 public function student_hobby(){
     return $this->hasMany(studentHobby::class,'student_unique_id','student_id');
 }
 
+
+/** many to many relationship  */
+
+public function courses()
+{
+    return $this->belongsToMany(Course::class, 'course_students', 'student_uniuqe_id','course_unique_id');
+}
 
 
 
