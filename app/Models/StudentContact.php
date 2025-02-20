@@ -20,4 +20,10 @@ class StudentContact extends Model
         'editor',
     ];
 
+
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

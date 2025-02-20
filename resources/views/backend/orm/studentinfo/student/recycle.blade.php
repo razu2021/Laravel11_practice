@@ -53,8 +53,8 @@
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{route('student.restor',$data->student_id)}}">Restor</a></li>
-                                    <li><a class="dropdown-item" href="{{route('student.delete',$data->student_id)}}" >Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{route('student.restor',$data->studentid)}}">Restor</a></li>
+                                    <li><a class="dropdown-item" href="{{route('student.delete',$data->studentid)}}" >Delete</a></li>
                                 </ul>
                                 </div>
                              </td>

@@ -25,7 +25,7 @@
                 <div class="student_menu">
                     <ul>
                         <li><a href="#" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Father Information</a></li>
-                        <li><a href="#" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal{{$alldata->student_id}}">student Contact Information</a></li>
+                        <li><a href="#" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal{{$alldata->studentid}}">student Contact Information</a></li>
                         
                     </ul>
                 </div>
@@ -40,7 +40,7 @@
 
 <!--  add information modla  -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal{{$alldata->student_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$alldata->studentid}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,7 +52,7 @@
         <form action="{{route('student_contact.submit')}}" method="POST" enctype="multipart/form-data">
             @csrf
                 <h3>File Upload Form</h3>
-                <input type="hidden" name="student_unique_id" id="phone"  class="form-control"  aria-describedby="name" value="{{$alldata->student_id}}">
+                <input type="hidden" name="student_unique_id" id="phone"  class="form-control"  aria-describedby="name" value="{{$alldata->studentid}}">
                 <div class="mb-3">
                     <label for="title" class="form-label">Student Phone Number </label>
                     <input type="text" name="phone" id="phone"  class="form-control"  aria-describedby="name">

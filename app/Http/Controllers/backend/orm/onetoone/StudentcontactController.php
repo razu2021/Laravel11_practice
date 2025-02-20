@@ -33,10 +33,10 @@ class StudentcontactController extends Controller
 
         $studentId = $request->student_unique_id;
         
-
+        //dd($request);
         $insert= StudentContact::create([
 
-            'student_unique_id'=>$studentId,
+            'student_id'=>$studentId,
             'phone'=>$request->phone,
             'email'=>$request->email,
         ]);
