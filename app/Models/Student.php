@@ -20,13 +20,13 @@ class Student extends Model
         'editor',
     ];
 
-    protected $primaryKey = 'studentid'; // Custom primary key
+    protected $primaryKey = 'student_id'; // Custom primary key
 
 
 
 /**-------  join all table relationship ---- */
 public function student_contact(){
-    return $this->hasOne(StudentContact::class);
+    return $this->hasOne(StudentContact::class,'student_unique_id','student_id');
 }
 
 

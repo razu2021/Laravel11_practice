@@ -54,8 +54,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="">Edit</a></li>
-                                    <li><a class="dropdown-item" href="{{route('student.view',$data->studentid)}}">View</a></li>
-                                    <li><a class="dropdown-item" href="{{route('student.softdelete',$data->studentid)}}" >Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{route('student.view',$data->student_id)}}">View</a></li>
+                                    <li><a class="dropdown-item" href="{{route('student.softdelete',$data->student_id)}}" >Delete</a></li>
                                 </ul>
                                 </div>
                              </td>

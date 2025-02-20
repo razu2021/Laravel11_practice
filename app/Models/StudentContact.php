@@ -8,6 +8,8 @@ class StudentContact extends Model
 {
     //
 
+    protected $primaryKey = 'student_contact_id';
+
     protected $guarded = [];
     protected $filable = [
         'student_contact_id',
