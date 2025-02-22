@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\orm\hasonethrow\universityController;
 use App\Http\Controllers\backend\orm\onetomay\StudentHobbyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\dashboardController;
+use App\Http\Controllers\backend\orm\hasonethrow\TeacherBankController;
 use App\Http\Controllers\backend\orm\manytomany\StudentCourseController;
 use App\Http\Controllers\backend\orm\studentController;
 use App\Http\Controllers\backend\orm\onetoone\StudentcontactController;
@@ -72,6 +73,8 @@ Route::controller(StudentCourseController::class)->prefix('student/course/')->na
 
 
 
+
+
 Route::controller(StudentcontactController::class)->prefix('student-contact/')->name('student_contact.')->group(function(){
     Route::get('all','index')->name('all');
     Route::get('add','add')->name('add');
@@ -111,6 +114,19 @@ Route::controller(TeacherController::class)->prefix('teacher')->name('teacher.')
 });
 /**----------- student table route  has one throw ------------ */
 Route::controller(TeacherContactController::class)->prefix('teacher_contact')->name('teacher_contact.')->group(function(){
+    Route::get('all','index')->name('all');
+    Route::get('add','add')->name('add');
+    Route::get('view/{id}','view')->name('view');
+    Route::get('edit','edit')->name('edit');
+    Route::post('submit','insert')->name('submit');
+    Route::get('softdelete/{id}','softdelete')->name('softdelete');
+    Route::get('restor/{id}','restor')->name('restor');
+    Route::get('delete/{id}','delete')->name('delete');
+    Route::get('recycle','recycle')->name('recycle');
+   
+});
+/**----------- student table route  has one throw ------------ */
+Route::controller(TeacherBankController::class)->prefix('teacher_bank')->name('teacher_bank.')->group(function(){
     Route::get('all','index')->name('all');
     Route::get('add','add')->name('add');
     Route::get('view/{id}','view')->name('view');

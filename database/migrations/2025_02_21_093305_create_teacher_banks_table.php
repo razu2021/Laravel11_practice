@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('teacher_banks', function (Blueprint $table) {
             $table->bigIncrements('teacher_bank_id');
-            $table->unsignedBigInteger('contact_unique_id')->unique();
+            $table->unsignedBigInteger('teacher_unique_id')->unique();
             $table->string('bank_name')->nullable();          
             $table->string('account_number')->nullable();          
             $table->string('routing_number')->nullable();          
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('contact_unique_id')->references('teacher_contact_id')->on('teacher_contacts')->onDelete('cascade');
+            $table->foreign('teacher_unique_id')->references('teacher_id')->on('teachers')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,11 @@ class university extends Model
     }
 
     public function TeacherContact(){
-        return $this->hasOneThrough(TeacherContact::class,teacher::class,'university_unique_id','teacher_unique_id','university_id','teacher_id');
+        return $this->hasManyThrough(TeacherContact::class,teacher::class,'university_unique_id','teacher_unique_id','university_id','teacher_id');
+    }
+    //  bank relation 
+    public function TeacherBank(){
+        return $this->hasManyThrough(Teacher_bank::class,teacher::class,'university_unique_id','teacher_unique_id','university_id','teacher_id');
     }
 
 }

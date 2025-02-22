@@ -12,7 +12,8 @@ class universityController extends Controller
     public function index(){
         $all = university::with([
             'teachers',
-            'TeacherContact'
+            'TeacherContact',
+            'TeacherBank'
         ])->get();
         //dd($all);
         return view('backend.orm.studentinfo.university.index',compact('all'));
@@ -38,8 +39,6 @@ class universityController extends Controller
         ]);
 
 
-
-   
     if ($insert) {
         flash()->success('Your Information Submited !');
     } else {

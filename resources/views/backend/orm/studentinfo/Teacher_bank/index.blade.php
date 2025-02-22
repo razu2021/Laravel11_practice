@@ -11,13 +11,13 @@
                                 <h3>Table Information </h3>
                             </div>
                             <div class="col-lg-6 text-end">
-                            <a href="{{route('university.recycle')}}">
+                            <a href="{{route('teacher_bank.recycle')}}">
                             <button type="button" class="btn btn-warning position-relative mx-2">
                                 Recycle <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span class="visually-hidden">unread messages</span>
                                 </span>
                              </button>
                              </a>
-                                <button class="btn btn-success"><a class="text-white" href="{{route('university.add')}}">Add New Information</a></button>
+                                <button class="btn btn-success"><a class="text-white" href="{{route('teacher_bank.add')}}">Add New Information</a></button>
                             </div>
                         </div>
                         <hr>
@@ -38,9 +38,9 @@
                         <tbody>
                         @foreach($all as $data)
                             <tr>
-                            <th scope="row">{{$data->university_id}}</th>
-                            <td>{{$data->university_name}}</td>
-                            <td>xxxxxxx</td>
+                            <th scope="row">{{$data->teacher_id}}</th>
+                            <td>{{$data->teacher_phone}}</td>
+                            <td>{{$data->teacher_email}}</td>
                             <td>xxxxx</td>
                             <td> <img src="" alt="" class="" height="80px" width="auto"></td>
                             <td>Created</td>
@@ -54,8 +54,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="">Edit</a></li>
-                                    <li><a class="dropdown-item" href="{{route('university.view',$data->university_id)}}">View</a></li>
-                                    <li><a class="dropdown-item" href="{{route('university.softdelete',$data->university_id)}}" >Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{route('teacher_bank.view',$data->teacher_bank_id)}}">View</a></li>
+                                    <li><a class="dropdown-item" href="{{route('teacher_bank.softdelete',$data->teacher_bank_id)}}" >Delete</a></li>
                                 </ul>
                                 </div>
                              </td>
@@ -71,51 +71,5 @@
             <!-- col end  -->
         </div>
     </div>
-
-
-<section class="mt-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 card">
-                <h3 class="pb-2 pt-2">All Teacher Information </h3>
-                <div class="tablearea">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">email</th>
-                            <th scope="col">Bank</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($all as $university)
-                            @foreach($university->teachers as $teacher)
-                               
-                                <tr>
-                                    <td>{{ $university->university_name }}</td>
-                                    <td>{{ $teacher->teacher_name }}</td>
-                                    <td>{{$teacher->TeacherContact ? $teacher->TeacherContact->teacher_phone : 'Not Found' }}</td>
-                                    <td>{{$teacher->TeacherContact ? $teacher->TeacherContact->teacher_email :'Not Found' }}</td>
-                                    <td>{{$teacher->TeacherBank ? $teacher->TeacherBank->bank_name :'Not Found' }}</td>
-                                </tr>
-                               
-                            @endforeach
-                        @endforeach
-                             
-                        </tbody>
-                      </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
 
 @endsection
