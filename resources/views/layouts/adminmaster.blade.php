@@ -277,6 +277,11 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="{{route('newses.all')}}" class="menu-link">
+                    <div data-i18n="Badges">Newses</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="ui-buttons.html" class="menu-link">
                     <div data-i18n="Buttons">Buttons</div>
                   </a>
