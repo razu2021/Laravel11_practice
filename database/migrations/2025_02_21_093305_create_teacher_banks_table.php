@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('universities', function (Blueprint $table) {
-            $table->bigIncrements('university_id');
-            $table->string('university_name')->nullable();          
+        Schema::create('teacher_banks', function (Blueprint $table) {
+            $table->bigIncrements('teacher_bank_id');
+            $table->unsignedBigInteger('contact_unique_id')->unique();
+            $table->string('bank_name')->nullable();          
+            $table->string('account_number')->nullable();          
+            $table->string('routing_number')->nullable();          
+            $table->string('account_type')->nullable();          
             $table->string('slug')->nullable()->unique();
             $table->string('status')->default(1);
             $table->string('post_status')->default(0);
@@ -21,6 +25,8 @@ return new class extends Migration
             $table->integer('editor')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('contact_unique_id')->references('teacher_contact_id')->on('teacher_contacts')->onDelete('cascade');
         });
     }
 
@@ -29,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('universities',function (Blueprint $table){
+        Schema::create('teacher_banks',function (Blueprint $table){
             $table->dropSoftDeletes();
         });
     }

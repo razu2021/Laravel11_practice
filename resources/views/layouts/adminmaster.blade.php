@@ -253,22 +253,22 @@
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-box"></i>
-                <div data-i18n="User interface">User interface</div>
+                <div data-i18n="User interface">Accademi info  </div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="ui-accordion.html" class="menu-link">
-                    <div data-i18n="Accordion">Accordion</div>
+                  <a href="{{route('university.all')}}" class="menu-link">
+                    <div data-i18n="Accordion">University </div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="ui-alerts.html" class="menu-link">
-                    <div data-i18n="Alerts">Alerts</div>
+                  <a href="{{route('teacher.all')}}" class="menu-link">
+                    <div data-i18n="Alerts">Teacher</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="ui-badges.html" class="menu-link">
-                    <div data-i18n="Badges">Badges</div>
+                  <a href="{{route('teacher_contact.all')}}" class="menu-link">
+                    <div data-i18n="Badges">Teacher Contact</div>
                   </a>
                 </li>
                 <li class="menu-item">
