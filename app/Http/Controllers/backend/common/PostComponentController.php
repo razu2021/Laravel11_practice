@@ -13,7 +13,7 @@ class PostComponentController extends Controller
 {
 
     public function index(){
-
+       
         $all = PostComponent::get();
     
         return view('backend.common.post_component.index',compact('all'));
@@ -37,14 +37,12 @@ class PostComponentController extends Controller
 
 
 
-    public function edit($post){
-
-       
-
-        $data = PostComponent::where('id',$post)->firstOrFail();
-
-        return view ('backend.common.post_component.edit',compact('data'));
+    public function edit(PostComponent $postComponent)
+    {
+        //dd($postComponent);
+        return view('backend.common.post_component.edit', compact('postComponent'));
     }
+    
 
 
 

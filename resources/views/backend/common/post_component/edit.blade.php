@@ -9,19 +9,19 @@
             <h3>File Upload Form</h3>
            
         
-                <input type="hidden" name="id" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$data->id}}">
-                <input type="hidden" name="slug" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$data->slug}}">
+                <input type="hidden" name="id" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$postComponent->id}}">
+                <input type="hidden" name="slug" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$postComponent->slug}}">
                 
         
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Post Title</label>
-                <input type="text" name="title" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$data->post_title}}">
+                <input type="text" name="title" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$postComponent->post_title}}">
                 <div id="title" class="form-text">We'll never share your email with anyone else.</div>
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Post Description</label>
-                <input type="text" name="title" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$data->post_desc}}">
+                <input type="text" name="title" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="{{$postComponent->post_desc}}">
                 <div id="title" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             

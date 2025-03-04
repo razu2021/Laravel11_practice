@@ -181,7 +181,8 @@ Route::controller(PostComponentController::class)->prefix('post_component')->nam
     Route::get('all','index')->name('all');
     Route::get('add','add')->name('add')->middleware('can:isUserid');
     Route::get('view/{id}','view')->name('view');
-    Route::get('edit/{post}','edit')->name('edit')->middleware('can:editRole,post');
+    Route::get('edit/{postComponent}', 'edit')->name('edit')->middleware('can:update,postComponent');
+
     Route::post('submit','insert')->name('submit');
     Route::post('update','update')->name('update');
     Route::get('softdelete/{id}','softdelete')->name('softdelete');
@@ -190,9 +191,6 @@ Route::controller(PostComponentController::class)->prefix('post_component')->nam
     Route::get('recycle','recycle')->name('recycle');
    
 });
-
-
-
 
 
 
