@@ -11,4 +11,10 @@ class PostComponent extends Model
 
     protected $guarded = [];
 
+
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator', 'id');
+    }
 }

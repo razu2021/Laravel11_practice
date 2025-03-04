@@ -179,10 +179,11 @@ Route::controller(newsController::class)->prefix('newses')->name('newses.')->gro
  */
 Route::controller(PostComponentController::class)->prefix('post_component')->name('post_component.')->group(function(){
     Route::get('all','index')->name('all');
-    Route::get('add','add')->name('add');
+    Route::get('add','add')->name('add')->middleware('can:isUserid');
     Route::get('view/{id}','view')->name('view');
-    Route::get('edit','edit')->name('edit');
+    Route::get('edit/{post}','edit')->name('edit')->middleware('can:editRole,post');
     Route::post('submit','insert')->name('submit');
+    Route::post('update','update')->name('update');
     Route::get('softdelete/{id}','softdelete')->name('softdelete');
     Route::get('restor/{id}','restor')->name('restor');
     Route::get('delete/{id}','delete')->name('delete');

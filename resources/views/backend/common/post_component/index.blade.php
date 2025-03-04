@@ -53,9 +53,20 @@
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">Edit</a></li>
-                                    <li><a class="dropdown-item" href="{{route('newses.view',$data->id)}}">View</a></li>
-                                    <li><a class="dropdown-item" href="{{route('newses.softdelete',$data->id)}}" >Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{route('post_component.edit',$data->id)}}">Edit</a></li>
+                                    <li><a class="dropdown-item" href="{{route('post_component.view',$data->id)}}">View</a></li>
+                                    <li><a class="dropdown-item" href="{{route('post_component.softdelete',$data->id)}}" >Delete</a></li>
+                                    <hr>
+
+                                    @if(Gate::allows('isUserid'))
+                                    <li><a class="dropdown-item" href="#">Gete with Permission </a></li>
+                                    @endif
+
+                                    @cannot('isUserid')
+                                    <li><a class="dropdown-item" href="#">Gete without Permission </a></li>
+                                    @endcan
+
+
                                 </ul>
                                 </div>
                              </td>
