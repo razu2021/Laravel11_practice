@@ -19,6 +19,22 @@
     <div class="main_page">
         <h2>{{ $mailsubject }}</h2>
         <p>{{ $mailmessages }}</p>
+        <div class="social">
+            <a href="">{{$sociallink['facebook']}} |</a>
+            <a href="">{{$sociallink['twitter']}}|</a>
+            <a href="">{{$sociallink['linkedin']}} |</a>
+            <a href="">{{$sociallink['instagram']}} </a>
+        </div>
+        <hr>
+        <p>{{$address}}</p>
+        <hr>
+       
+       
+        <p>{{ $post->post_title}}</p>
+        <p>{{ $post->post_desc}}</p>
+       
+      
+
     </div>
 </body>
 </html>

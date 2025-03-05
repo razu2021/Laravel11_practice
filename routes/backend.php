@@ -188,13 +188,16 @@ Route::controller(PostComponentController::class)->prefix('post_component')->nam
     Route::get('restor/{id}','restor')->name('restor');
     Route::get('delete/{id}','delete')->name('delete');
     Route::get('recycle','recycle')->name('recycle');
+
+
+    Route::get('testmail/{id}','tesmailsend')->name('testmail');
    
 });
 
 
+//  send eamil --------
 
-
-Route::get('send-email',[mailController::class ,'SendMail']);
+Route::get('send-email',[mailController::class ,'SendMail'])->name('send_email');
 
 
 
