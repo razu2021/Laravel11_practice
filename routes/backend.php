@@ -12,7 +12,7 @@ use App\Http\Controllers\backend\orm\hasonethrow\TeacherBankController;
 use App\Http\Controllers\backend\orm\manytomany\StudentCourseController;
 use App\Http\Controllers\backend\orm\studentController;
 use App\Http\Controllers\backend\orm\onetoone\StudentcontactController;
-
+use App\Http\Controllers\mail\mailController;
 
 Route::middleware('auth')->group(function(){
     Route::get('admin/dashboard',[dashboardController::class , 'index_dashboard'])->name('dashboard');
@@ -179,10 +179,9 @@ Route::controller(newsController::class)->prefix('newses')->name('newses.')->gro
  */
 Route::controller(PostComponentController::class)->prefix('post_component')->name('post_component.')->group(function(){
     Route::get('all','index')->name('all');
-    Route::get('add','add')->name('add')->middleware('can:isUserid');
+    Route::get('add','add')->name('add');
     Route::get('view/{id}','view')->name('view');
-    Route::get('edit/{postComponent}', 'edit')->name('edit')->middleware('can:update,postComponent');
-
+    Route::get('edit/{postComponent}', 'edit')->name('edit');
     Route::post('submit','insert')->name('submit');
     Route::post('update','update')->name('update');
     Route::get('softdelete/{id}','softdelete')->name('softdelete');
@@ -195,7 +194,7 @@ Route::controller(PostComponentController::class)->prefix('post_component')->nam
 
 
 
-
+Route::get('send-email',[mailController::class ,'SendMail']);
 
 
 

@@ -13,7 +13,7 @@ class PostComponentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->id === 1;
     }
 
     /**
@@ -21,7 +21,7 @@ class PostComponentPolicy
      */
     public function view(User $user, PostComponent $postComponent): bool
     {
-        return false;
+        return $user->id === $postComponent->creator;
     }
 
     /**
@@ -29,7 +29,7 @@ class PostComponentPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->id === 1;
     }
 
     /**

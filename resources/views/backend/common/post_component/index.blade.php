@@ -25,9 +25,9 @@
                         <thead>
                             <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Father Name </th>
-                            <th scope="col">Mother Name </th>
+                            <th scope="col">Post Title</th>
+                            <th scope="col">Post Des  </th>
+                            <th scope="col">Creator Id</th>
                             <th scope="col">DoB </th>
                             <th scope="col">Created </th>
                             <th scope="col">Updated</th>
@@ -39,9 +39,10 @@
                         @foreach($all as $data)
                             <tr>
                             <th scope="row">{{$data->id}}</th>
-                            <td>{{$data->news_title}}</td>
-                            <td>{{$data->teacher_email}}</td>
-                            <td>xxxxx</td>
+                            <td>{{$data->post_title}}</td>
+                            <td>{{$data->post_desc}}</td>
+                            <td>{{$data->creator}}</td>
+                            
                             <td> <img src="" alt="" class="" height="80px" width="auto"></td>
                             <td>Created</td>
                             <td>updated </td>
@@ -53,7 +54,9 @@
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu">
+                              
                                     <li><a class="dropdown-item" href="{{route('post_component.edit',$data->id)}}">Edit</a></li>
+                            
                                     <li><a class="dropdown-item" href="{{route('post_component.view',$data->id)}}">View</a></li>
                                     <li><a class="dropdown-item" href="{{route('post_component.softdelete',$data->id)}}" >Delete</a></li>
                                     <hr>

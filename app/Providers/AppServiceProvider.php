@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
+use App\Models\PostComponent;
 use App\Policies\PostComponentPolicy;
 
 
@@ -29,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
     
          /** ======  policy register ======= */
-
+         Gate::policy(PostComponent::class, PostComponentPolicy::class);
 
         /**
          *  create a gete for user 
