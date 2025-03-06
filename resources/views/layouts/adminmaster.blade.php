@@ -406,10 +406,16 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="{{route('user_contact.all')}}" class="menu-link">
+                    <div data-i18n="Input groups">User Contact</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="{{route('send_email')}}" class="menu-link">
                     <div data-i18n="Input groups">Send Mail</div>
                   </a>
                 </li>
+
               </ul>
             </li>
             <li class="menu-item">

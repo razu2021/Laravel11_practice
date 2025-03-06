@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PostComponent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\mail\welcomemail;
+use App\Jobs\SendWelcomeEmailJob;
 use App\Models\User;
 
 class mailController extends Controller
@@ -26,15 +26,16 @@ class mailController extends Controller
         ];
         $address = "51/2 west Razabazar dhaka-1215";
 
-    foreach($alluser as $mailto){
-        $mailsend =   Mail::to($mailto)->send(new welcomemail($mailsubject , $mailmassages,$sociallink,$address,$post));
+    foreach($alluser as $user){
+        if($user){
+            $mailsend =   dispatch(new SendWelcomeEmailJob($user,$mailsubject , $mailmassages,$sociallink,$address,$post));
+        }
     }
 
 
-   
-      
+
     
-      if ($mailsend) {
+    if($mailsend) {
         flash()->success('Email Submited !');
      } else {
         flash()->error('Your E-mail submitted Faield !.');

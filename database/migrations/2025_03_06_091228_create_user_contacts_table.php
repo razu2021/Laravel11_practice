@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_components', function (Blueprint $table) {
+        Schema::create('user_contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('post_title')->nullable();          
-            $table->text('post_desc')->nullable();          
+            $table->string('user_name')->nullable();          
+            $table->string('user_email')->nullable();          
+            $table->string('user_phone')->nullable();          
+            $table->text('subject')->nullable();          
+            $table->text('messages')->nullable();          
+            $table->string('file_name')->nullable();          
+            $table->text('messages_reply')->nullable();          
             $table->string('slug')->nullable()->unique();
             $table->string('status')->default(1);
             $table->string('post_status')->default(0);
@@ -30,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('post_components',function (Blueprint $table){
+        Schema::create('user_contacts',function (Blueprint $table){
             $table->dropSoftDeletes();
         });
     }

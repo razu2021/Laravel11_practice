@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests; 
-use Illuminate\Support\Facades\Mail;
-use App\mail\welcomemail;
+use App\Jobs\SendWelcomeEmailJob;
 
 class PostComponentController extends Controller
 {
@@ -112,9 +111,11 @@ class PostComponentController extends Controller
          ];
          $address = "51/2 west Razabazar dhaka-1215";
  
-     foreach($alluser as $mailto){
-         $mailsend =   Mail::to($mailto)->send(new welcomemail($mailsubject , $mailmassages,$sociallink,$address,$post));
-     }
+         foreach($alluser as $user){
+            if($user){
+                $mailsend =   dispatch(new SendWelcomeEmailJob($user,$mailsubject , $mailmassages,$sociallink,$address,$post));
+            }
+        }
  
  
     
