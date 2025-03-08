@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\orm\hasonethrow\TeacherController;
 use App\Http\Controllers\backend\orm\hasonethrow\universityController;
 use App\Http\Controllers\backend\orm\onetomay\StudentHobbyController;
 use App\Http\Controllers\backend\orm\poly\newsController;
+use App\Http\Controllers\backend\setting\EmailSettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\orm\hasonethrow\TeacherBankController;
@@ -210,6 +211,20 @@ Route::controller(UserContactController::class)->prefix('user_contact')->name('u
    
 });
 
+
+/***   email setting route start here === */
+Route::controller(EmailSettingController::class)->prefix('email_setting')->name('email_setting.')->group(function(){
+    Route::get('all','index')->name('all');
+    Route::get('add','add')->name('add');
+    Route::get('view/{id}','view')->name('view');
+    Route::get('edit/{id}', 'edit')->name('edit');
+    Route::post('submit','insert')->name('submit');
+    Route::post('update','update')->name('update');
+    Route::get('softdelete/{id}','softdelete')->name('softdelete');
+    Route::get('restor/{id}','restor')->name('restor');
+    Route::get('delete/{id}','delete')->name('delete');
+    Route::get('recycle','recycle')->name('recycle');
+});
 
 //  send eamil --------
 

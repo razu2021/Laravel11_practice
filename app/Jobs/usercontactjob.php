@@ -16,7 +16,7 @@ class usercontactjob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(array $insertData,$mailto , $fileName)
+    public function __construct(array $insertData,$mailto , $fileName )
     {
       $this->insertData = $insertData;
       $this->mailto = $mailto;

@@ -421,12 +421,12 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Layouts">Form Layouts</div>
+                <div data-i18n="Form Layouts">Plugin Setting </div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="form-layouts-vertical.html" class="menu-link">
-                    <div data-i18n="Vertical Form">Vertical Form</div>
+                  <a href="{{route('email_setting.all')}}" class="menu-link">
+                    <div data-i18n="Vertical Form">Email Setting</div>
                   </a>
                 </li>
                 <li class="menu-item">

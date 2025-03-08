@@ -20,7 +20,7 @@ class usercontactmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(array $insertData,$fileName)
+    public function __construct(array $insertData,$fileName )
     {
        $this->insertData = $insertData;
        $this->fileName = $fileName;
