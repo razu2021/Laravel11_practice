@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -14,13 +15,15 @@ class usercontactmail extends Mailable
     use Queueable;
 
     public $insertData;
+    public $fileName ;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(array $insertData)
+    public function __construct(array $insertData,$fileName)
     {
        $this->insertData = $insertData;
+       $this->fileName = $fileName;
     }
 
     /**
@@ -50,6 +53,15 @@ class usercontactmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+    
+        $attchment = [] ;
+
+        if($this->fileName){
+            $attchment = [
+                Attachment::fromPath(public_path('uploads/user_contact/'.$this->fileName))
+            ] ;
+           
+        }
+        return $attchment;
     }
 }

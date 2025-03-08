@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend\common;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Models\UserContact;
 use Illuminate\Http\Request;
 use App\Jobs\usercontactjob;
@@ -61,8 +62,22 @@ public function insert(Request $request){
         'subject'=>$request->subject,
         'messages'=>$request->messages,
     ]);
+ 
+   /** file upload code  */
+    $file_directory = 'uploads/user_contact/';
+    if($request->hasFile('file')){
+        $file = $request->file('file') ; // get mail file 
+        $fileName ="user_contact".'-'.time().'_'.mt_rand(10000, 100000).'_'.$file->getClientOriginalName();
+        Storage::disk('public')->putFileAs($file_directory, $file, $fileName); 
+
+        UserContact::where('id',$insertData->id)->update([
+            'file_name'=>$fileName,
+        ]);
+       
+    }
 
 
+    
     if($insertData){
         Session::flash('success_messages','Post submitted successfully!');
     }else{
@@ -71,7 +86,7 @@ public function insert(Request $request){
 
     /** ---- send a email to admin or author ---- */
     $mailto = "mdrazuhossainraj@gmail.com";
-    dispatch(new usercontactjob($insertData->toArray(),$mailto));
+    dispatch(new usercontactjob($insertData->toArray(),$mailto,$fileName));
 
 
 
