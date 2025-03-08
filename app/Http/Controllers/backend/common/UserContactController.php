@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\UserContact;
 use Illuminate\Http\Request;
 use App\Jobs\usercontactjob;
+use App\Jobs\usercontactreplyjob;
 
 class UserContactController extends Controller
 {
@@ -18,6 +19,30 @@ public function index(){
 public function add(){
     return view('backend.common.usercontact.add');
 }
+public function edit($id){
+    $data = UserContact::where('id',$id)->firstOrFail();
+    return view('backend.common.usercontact.edit',compact('data'));
+}
+public function messages_reply($id){
+    $data = UserContact::where('id',$id)->firstOrFail();
+    $usermail = $data->user_email ;
+
+    if (!empty($data->messages_reply) && !empty($data->user_email)) {
+        dispatch(new usercontactreplyjob($data->user_email, $data)); // Ensure user_email is valid
+    
+        flash()->success('Messages Reply Sent Successfully');
+    } else {
+        flash()->error('Messages Reply has not been set!');
+    }
+  
+    return back();
+
+
+
+
+}
+
+
 
 
 
@@ -27,9 +52,9 @@ public function add(){
 
 
 public function insert(Request $request){
+    
 
-
-    $insert = UserContact::create([
+    $insertData = UserContact::create([
         'user_name'=>$request->user_name,
         'user_email'=>$request->user_email,
         'user_phone'=>$request->user_phone,
@@ -38,7 +63,7 @@ public function insert(Request $request){
     ]);
 
 
-    if($insert){
+    if($insertData){
         Session::flash('success_messages','Post submitted successfully!');
     }else{
         Session::flash('error_messages','Post submitted Faild!');
@@ -46,7 +71,7 @@ public function insert(Request $request){
 
     /** ---- send a email to admin or author ---- */
     $mailto = "mdrazuhossainraj@gmail.com";
-   
+    dispatch(new usercontactjob($insertData->toArray(),$mailto));
 
 
 
@@ -54,6 +79,27 @@ public function insert(Request $request){
 
 }
 
+
+
+
+public function update(Request $request){
+
+    $id = $request->id;
+
+    $updateData = UserContact::where('id',$id)->update([
+        'messages_reply'=>$request->messages_reply,
+    ]);
+
+
+    if($updateData){
+        Session::flash('success_messages','Post submitted successfully!');
+    }else{
+        Session::flash('error_messages','Post submitted Faild!');
+    }
+
+    return back();
+
+}
 
 
 }

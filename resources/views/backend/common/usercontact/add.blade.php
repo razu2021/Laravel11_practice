@@ -16,26 +16,26 @@
                 <h3>User Contact Form</h3>
                
                 <div class="mb-3">
-                    <label for="title" class="form-label">User Name </label>
-                    <input type="text" name="user_name" id="teacher_name"  class="form-control"  aria-describedby="name" >
+                    <label for="user_name" class="form-label">User Name </label>
+                    <input type="text" name="user_name" id="user_name"  class="form-control"   value="{{old('user_name')}}" >
                     <div id="title" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <!-- end  -->
                 <div class="mb-3">
-                    <label for="title" class="form-label">User Email </label>
-                    <input type="email" name="user_email" id="teacher_name"  class="form-control"  aria-describedby="name">
+                    <label for="user_email" class="form-label">User Email </label>
+                    <input type="email" name="user_email" id="user_email"  class="form-control"  autocomplete="on" value="{{old('user_email')}}">
                     <div id="title" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <!-- end  -->
                 <div class="mb-3">
-                    <label for="title" class="form-label">User phone </label>
-                    <input type="text" name="user_phone" id="teacher_name"  class="form-control"  aria-describedby="name">
+                    <label for="user_phone" class="form-label">User phone </label>
+                    <input type="text" name="user_phone" id="user_phone"  class="form-control"  autocomplete="on" value="{{old('user_phone')}}">
                     <div id="title" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <!-- end  -->
                 <div class="mb-3">
-                    <label for="title" class="form-label">Subject</label>
-                    <input type="text" name="subject" id="teacher_name"  class="form-control"  aria-describedby="name">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" name="subject" id="subject"  class="form-control"  autocomplete="on" value="{{old('subject')}}">
                     <div id="title" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <!-- end  -->

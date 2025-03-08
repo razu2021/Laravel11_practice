@@ -9,18 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class usercontactmail extends Mailable
+class usercontactreplymail extends Mailable
 {
-    use Queueable;
+    use Queueable, SerializesModels;
 
-    public $insertData;
-
+    public $data;
     /**
      * Create a new message instance.
      */
-    public function __construct(array $insertData)
+    public function __construct($data)
     {
-       $this->insertData = $insertData;
+        $this->data = $data;
     }
 
     /**
@@ -29,7 +28,7 @@ class usercontactmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'User Contact Mail ',
+            subject: 'Usercontactreplymail',
         );
     }
 
@@ -39,7 +38,7 @@ class usercontactmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.usercontact-mail',
+            view: 'mail.usercontact_messagesreply',
         );
     }
 

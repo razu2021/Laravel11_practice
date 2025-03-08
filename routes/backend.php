@@ -199,16 +199,14 @@ Route::controller(UserContactController::class)->prefix('user_contact')->name('u
     Route::get('all','index')->name('all');
     Route::get('add','add')->name('add');
     Route::get('view/{id}','view')->name('view');
-    Route::get('edit/{postComponent}', 'edit')->name('edit');
+    Route::get('edit/{id}', 'edit')->name('edit');
     Route::post('submit','insert')->name('submit');
     Route::post('update','update')->name('update');
     Route::get('softdelete/{id}','softdelete')->name('softdelete');
     Route::get('restor/{id}','restor')->name('restor');
     Route::get('delete/{id}','delete')->name('delete');
     Route::get('recycle','recycle')->name('recycle');
-
-
-    Route::get('testmail/{id}','tesmailsend')->name('testmail');
+    Route::get('messages/reply/{id}','messages_reply')->name('messages_reply');
    
 });
 
